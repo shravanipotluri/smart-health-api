@@ -113,6 +113,7 @@ class AppointmentController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer|exists:users,id',
             'healthcare_provider_id' => 'required|integer|exists:users,id',
+            'provider_name' => 'required|string', 
             'date' => 'required|date',
             'time' => 'required|date_format:H:i',
             'location' => 'required|string',

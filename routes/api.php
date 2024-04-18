@@ -7,6 +7,8 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\MedicationDispensationRecordController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\HealthcareProviderController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,6 +24,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/forgot-password', [UserController::class, 'forgotPassword']);
 Route::get('/users', [UserController::class, 'getAllUsers']);
+Route::get('/users/role/{role}', 'UserController@getUsersByRole');
 
 
 // Route::get('/medical_records', [MedicalRecordController::class, 'index']);
@@ -55,7 +58,7 @@ Route::post('/openai', function (Request $request) {
             ]);
     return $response->json();
 });
-
+Route::get('/providers', [HealthcareProviderController::class, 'getAllProviders']);
 Route::get('/appointments/{userId}', 'AppointmentController@index');
 Route::post('/appointments', 'AppointmentController@store');
 Route::put('/appointments/{appointmentId}', 'AppointmentController@update');

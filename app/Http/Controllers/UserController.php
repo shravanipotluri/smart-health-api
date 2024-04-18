@@ -97,7 +97,12 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function getUsersByRole($role)
+    {
+        $users = User::where('role', $role)->get();
 
+        return response()->json($users);
+    }
 
 
 }
