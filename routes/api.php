@@ -59,12 +59,15 @@ Route::post('/openai', function (Request $request) {
     return $response->json();
 });
 Route::get('/providers', [HealthcareProviderController::class, 'getAllProviders']);
+Route::get('/providers/{userId}', [HealthcareProviderController::class, 'getProvider']);
 Route::get('/appointments/{userId}', 'AppointmentController@index');
+Route::get('/appointments/hp/{hpId}', 'AppointmentController@hpindex');
 Route::post('/appointments', 'AppointmentController@store');
 Route::put('/appointments/{appointmentId}', 'AppointmentController@update');
 Route::delete('/appointments/{appointmentId}', 'AppointmentController@destroy');
 
 Route::get('/prescriptions/{userId}', 'PrescriptionController@index');
+Route::get('/prescriptions/hp/{hpId}', 'PrescriptionController@hpindex');
 Route::post('/prescriptions', 'PrescriptionController@store');
 Route::put('/prescriptions/{prescriptionId}', 'PrescriptionController@update');
 Route::delete('/prescriptions/{prescriptionId}', 'PrescriptionController@destroy');
