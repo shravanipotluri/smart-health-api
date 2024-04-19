@@ -18,4 +18,8 @@ public function getAllProviders() {
     $providers = HealthcareProvider::all();
     return response()->json($providers, 200);
 }
+public function getProvider($userId){
+    $providerDetails = HealthcareProvider::where('user_id', $userId)->get();
+        return response()->json($providerDetails);
+}
 }
